@@ -38,6 +38,18 @@ public class ComApplication {
         Gson gson = new Gson();
         return gson.toJson(response);
     }
+	@GetMapping("/allUsers")
+    public String getAllUsers() {
+        // Create a sample response object
+        Map<String, Object> response = new HashMap<>();
+        response.put("1", "Farook");
+        response.put("2", "Divya");
+        response.put("3", "Rajeswari");
+
+        // Convert the response object to JSON using Gson
+        Gson gson = new Gson();
+        return gson.toJson(response);
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(ComApplication.class, args);
