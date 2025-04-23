@@ -23,6 +23,10 @@ public class ComApplication {
 	public String test() {
 		return "testing works";
 	}
+	@GetMapping("/healthCheck")
+	public String health() {
+		return "health check working";
+	}
 	@GetMapping("/allEmployees")
     public String getGsonResponse() {
         // Create a sample response object
