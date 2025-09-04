@@ -1,0 +1,1 @@
+Add agent auto file\n\nCreate/extend AGENT_AUTO.md and build\n
