@@ -1,0 +1,12 @@
+diff --git a/AGENT_AUTO.md b/AGENT_AUTO.md
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/AGENT_AUTO.md
+@@ -0,0 +1,0
+# Agent Auto Change
+- Title: implement DatabaseDTO clss
+- Notes: ## Description
+implement databaseDTO class with connection, using jdbc connection string return connection object
+- Timestamp: 1757069777
+
