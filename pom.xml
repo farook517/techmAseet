@@ -54,6 +54,11 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId> <!-- Use the latest version -->
 		</dependency>
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>msal4j</artifactId>
+			<version>1.17.2</version>
+		</dependency>
 
 	</dependencies>
 
