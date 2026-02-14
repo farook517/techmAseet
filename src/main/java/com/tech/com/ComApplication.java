@@ -1,18 +1,25 @@
 package com.tech.com;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.tech.com.dto.EmployeeDTO;
+import com.tech.com.service.EmployeeService;
 
 @RestController
 @SpringBootApplication(scanBasePackages = "com.tech")
 public class ComApplication {
+	
+	@Autowired
+	private EmployeeService employeeService;
 	
 	@GetMapping("/")
 	public String message()
@@ -28,15 +35,8 @@ public class ComApplication {
 		return "health check working";
 	}
 	@GetMapping("/allEmployees")
-    public String getGsonResponse() {
-        // Create a sample response object
-        Map<String, Object> response = new HashMap<>();
-        response.put("1", "Farook");
-        response.put("2", "Divya");
-
-        // Convert the response object to JSON using Gson
-        Gson gson = new Gson();
-        return gson.toJson(response);
+    public List<EmployeeDTO> getAllEmployees() {
+        return employeeService.getAllEmployees();
     }
 	@GetMapping("/allUsers")
     public String getAllUsers() {
