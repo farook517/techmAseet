@@ -18,8 +18,11 @@ import com.tech.com.service.EmployeeService;
 @SpringBootApplication(scanBasePackages = "com.tech")
 public class ComApplication {
 	
-	@Autowired
-	private EmployeeService employeeService;
+	private final EmployeeService employeeService;
+	
+	public ComApplication(EmployeeService employeeService) {
+		this.employeeService = employeeService;
+	}
 	
 	@GetMapping("/")
 	public String message()

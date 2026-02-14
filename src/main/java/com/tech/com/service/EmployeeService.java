@@ -14,8 +14,11 @@ import com.tech.com.repository.EmployeeRepository;
 @Service
 public class EmployeeService {
     
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
+    
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
     
     public List<EmployeeDto> getAllEmployees() {
         return employeeRepository.findAll().stream()
@@ -65,7 +68,6 @@ public class EmployeeService {
     
     private Employee convertToEntity(EmployeeDto employeeDto) {
         Employee employee = new Employee();
-        employee.setId(employeeDto.getId());
         employee.setName(employeeDto.getName());
         employee.setEmail(employeeDto.getEmail());
         employee.setDepartment(employeeDto.getDepartment());

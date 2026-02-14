@@ -2,9 +2,9 @@ package com.tech.com.controller;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,12 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tech.com.dto.EmployeeDto;
 import com.tech.com.service.EmployeeService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
     
-    @Autowired
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
+    
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
     
     @GetMapping
     public ResponseEntity<List<EmployeeDto>> getAllEmployees() {
@@ -38,13 +43,13 @@ public class EmployeeController {
     }
     
     @PostMapping
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> createEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
         EmployeeDto createdEmployee = employeeService.createEmployee(employeeDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdEmployee);
     }
     
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @Valid @RequestBody EmployeeDto employeeDto) {
         return employeeService.updateEmployee(id, employeeDto)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
