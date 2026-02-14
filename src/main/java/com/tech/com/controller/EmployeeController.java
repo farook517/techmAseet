@@ -2,6 +2,7 @@ package com.tech.com.controller;
 
 import com.tech.com.dto.EmployeeDto;
 import com.tech.com.service.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,14 +34,14 @@ public class EmployeeController {
 
     // Create new employee
     @PostMapping
-    public ResponseEntity<EmployeeDto> createEmployee(@RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> createEmployee(@Valid @RequestBody EmployeeDto employeeDto) {
         EmployeeDto createdEmployee = employeeService.createEmployee(employeeDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdEmployee);
     }
 
     // Update existing employee
     @PutMapping("/{id}")
-    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDto employeeDto) {
+    public ResponseEntity<EmployeeDto> updateEmployee(@PathVariable Long id, @Valid @RequestBody EmployeeDto employeeDto) {
         return employeeService.updateEmployee(id, employeeDto)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

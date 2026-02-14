@@ -3,6 +3,10 @@ package com.tech.com.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * JPA Entity representing an Employee in the database.
+ * Maps to the 'employees' table.
+ */
 @Entity
 @Table(name = "employees")
 public class Employee {

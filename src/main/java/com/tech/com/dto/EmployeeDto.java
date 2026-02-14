@@ -1,11 +1,22 @@
 package com.tech.com.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
+/**
+ * Data Transfer Object for Employee.
+ * Used to transfer employee data between layers without exposing the entity.
+ */
 public class EmployeeDto {
     private Long id;
+    
+    @NotBlank(message = "Name is required")
     private String name;
+    
+    @Email(message = "Email should be valid")
     private String email;
+    
     private String department;
     private String position;
     private LocalDate hireDate;
