@@ -3,24 +3,25 @@ package com.tech.com.service;
 import com.tech.com.dto.EmployeeDTO;
 import com.tech.com.entity.Employee;
 import com.tech.com.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
     
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
+    
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
     
     public List<EmployeeDTO> getAllEmployees() {
         return employeeRepository.findAll()
                 .stream()
                 .map(this::convertToDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
     
     public Optional<EmployeeDTO> getEmployeeById(Long id) {
@@ -37,7 +38,7 @@ public class EmployeeService {
         return employeeRepository.findByDepartment(department)
                 .stream()
                 .map(this::convertToDTO)
-                .collect(Collectors.toList());
+                .toList();
     }
     
     public EmployeeDTO createEmployee(EmployeeDTO employeeDTO) {
