@@ -48,8 +48,8 @@ class ComApplicationTests {
 	void testGetGsonResponse() throws Exception {
 		mockMvc.perform(get("/allEmployees"))
 				.andExpect(status().isOk())
-				.andExpect(jsonPath("$.1", is("Farook")))
-				.andExpect(jsonPath("$.2", is("Divya")));
+				.andExpect(jsonPath("$[0].name", is("Farook")))
+				.andExpect(jsonPath("$[1].name", is("Divya")));
 	}
 
 	@Test
