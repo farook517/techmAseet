@@ -13,8 +13,11 @@ import java.util.List;
 @RequestMapping("/api/laptops")
 public class LaptopController {
     
-    @Autowired
-    private LaptopService laptopService;
+    private final LaptopService laptopService;
+    
+    public LaptopController(LaptopService laptopService) {
+        this.laptopService = laptopService;
+    }
     
     @PostMapping
     public ResponseEntity<LaptopDetailsDto> createLaptop(@RequestBody LaptopDetailsDto laptopDto) {

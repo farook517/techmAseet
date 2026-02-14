@@ -13,8 +13,11 @@ import java.util.stream.Collectors;
 @Service
 public class LaptopService {
     
-    @Autowired
-    private LaptopRepository laptopRepository;
+    private final LaptopRepository laptopRepository;
+    
+    public LaptopService(LaptopRepository laptopRepository) {
+        this.laptopRepository = laptopRepository;
+    }
     
     public LaptopDetailsDto createLaptop(LaptopDetailsDto dto) {
         Laptop laptop = convertToEntity(dto);
@@ -89,21 +92,15 @@ public class LaptopService {
     
     private Laptop convertToEntity(LaptopDetailsDto dto) {
         Laptop laptop = new Laptop();
-        laptop.setBrand(dto.getBrand());
-        laptop.setModel(dto.getModel());
-        laptop.setSerialNumber(dto.getSerialNumber());
-        laptop.setProcessor(dto.getProcessor());
-        laptop.setRamSizeGB(dto.getRamSizeGB());
-        laptop.setStorageSizeGB(dto.getStorageSizeGB());
-        laptop.setOperatingSystem(dto.getOperatingSystem());
-        laptop.setPurchaseDate(dto.getPurchaseDate());
-        laptop.setPurchasePrice(dto.getPurchasePrice());
-        laptop.setStatus(dto.getStatus());
-        laptop.setAssignedTo(dto.getAssignedTo());
+        mapDtoToEntity(dto, laptop);
         return laptop;
     }
     
     private void updateEntityFromDto(Laptop laptop, LaptopDetailsDto dto) {
+        mapDtoToEntity(dto, laptop);
+    }
+    
+    private void mapDtoToEntity(LaptopDetailsDto dto, Laptop laptop) {
         laptop.setBrand(dto.getBrand());
         laptop.setModel(dto.getModel());
         laptop.setSerialNumber(dto.getSerialNumber());

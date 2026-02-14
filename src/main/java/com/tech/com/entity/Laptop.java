@@ -17,6 +17,7 @@ public class Laptop {
     @Column(nullable = false)
     private String model;
     
+    @Column(unique = true)
     private String serialNumber;
     
     private String processor;
