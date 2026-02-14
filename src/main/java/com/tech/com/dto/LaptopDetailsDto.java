@@ -186,23 +186,24 @@ public class LaptopDetailsDto {
 
     @Override
     public String toString() {
-        return "LaptopDetailsDto{" +
-                "id=" + id +
-                ", assetTag='" + assetTag + '\'' +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", serialNumber='" + serialNumber + '\'' +
-                ", processor='" + processor + '\'' +
-                ", ram='" + ram + '\'' +
-                ", storage='" + storage + '\'' +
-                ", osVersion='" + osVersion + '\'' +
-                ", assignedTo='" + assignedTo + '\'' +
-                ", purchaseDate=" + purchaseDate +
-                ", warrantyExpiry=" + warrantyExpiry +
-                ", status='" + status + '\'' +
-                ", purchaseCost=" + purchaseCost +
-                ", location='" + location + '\'' +
-                ", lastModified=" + lastModified +
-                '}';
+        StringBuilder sb = new StringBuilder("LaptopDetailsDto{");
+        sb.append("id=").append(id);
+        sb.append(", assetTag='").append(assetTag).append('\'');
+        sb.append(", brand='").append(brand).append('\'');
+        sb.append(", model='").append(model).append('\'');
+        sb.append(", serialNumber='").append(serialNumber).append('\'');
+        sb.append(", processor='").append(processor).append('\'');
+        sb.append(", ram='").append(ram).append('\'');
+        sb.append(", storage='").append(storage).append('\'');
+        sb.append(", osVersion='").append(osVersion).append('\'');
+        sb.append(", assignedTo='").append(assignedTo).append('\'');
+        sb.append(", purchaseDate=").append(purchaseDate);
+        sb.append(", warrantyExpiry=").append(warrantyExpiry);
+        sb.append(", status='").append(status).append('\'');
+        sb.append(", purchaseCost=").append(purchaseCost);
+        sb.append(", location='").append(location).append('\'');
+        sb.append(", lastModified=").append(lastModified);
+        sb.append('}');
+        return sb.toString();
     }
 }
