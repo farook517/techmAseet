@@ -36,7 +36,7 @@ public class ComApplication {
 		return "health check working";
 	}
 	@GetMapping("/allEmployees")
-    public ResponseEntity<List<EmployeeDTO>> getGsonResponse() {
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployees() {
         List<EmployeeDTO> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
     }

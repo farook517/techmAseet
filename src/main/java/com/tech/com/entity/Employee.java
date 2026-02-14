@@ -1,6 +1,7 @@
 package com.tech.com.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import java.time.LocalDateTime;
 
 @Entity
@@ -17,6 +18,7 @@ public class Employee {
     @Column(nullable = false)
     private String lastName;
     
+    @Email(message = "Email should be valid")
     @Column(unique = true, nullable = false)
     private String email;
     
