@@ -66,7 +66,6 @@ public class EmployeeService {
     
     private Employee convertToEntity(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
-        employee.setId(employeeDTO.getId());
         employee.setName(employeeDTO.getName());
         employee.setEmail(employeeDTO.getEmail());
         employee.setDepartment(employeeDTO.getDepartment());
